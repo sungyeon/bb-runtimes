@@ -32,8 +32,6 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
-with Interfaces.STM32.PWR; use Interfaces.STM32.PWR;
-
 package body System.BB.MCU_Parameters is
 
    --------------------
@@ -43,9 +41,7 @@ package body System.BB.MCU_Parameters is
    procedure PWR_Initialize
    is
    begin
-      --  Set the PWR to Scale 1 mode to stabilize the MCU when in high
-      --  performance mode.
-      PWR_Periph.CR.VOS := 1;
+      null;
    end PWR_Initialize;
 
    --------------------------

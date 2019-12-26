@@ -2,11 +2,11 @@
 --                                                                          --
 --                  GNAT RUN-TIME LIBRARY (GNARL) COMPONENTS                --
 --                                                                          --
---              S Y S T E M . B B . M C U _ P A R A M E T E R S             --
+--            S Y S T E M . B B . B O A R D _ P A R A M E T E R S           --
 --                                                                          --
 --                                  S p e c                                 --
 --                                                                          --
---                      Copyright (C) 2016, AdaCore                         --
+--                   Copyright (C) 2016-2017, AdaCore                       --
 --                                                                          --
 -- GNAT is free software;  you can  redistribute it  and/or modify it under --
 -- terms of the  GNU General Public License as published  by the Free Soft- --
@@ -32,19 +32,21 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
---  This package defines MCU parameters for the STM32F40x family
+--  This package defines board parameters for the STM32F407-Discovery board
 
-package System.BB.MCU_Parameters is
+package System.BB.Board_Parameters is
    pragma No_Elaboration_Code_All;
-   pragma Preelaborate;
+   pragma Pure;
 
-   Number_Of_Interrupts : constant := 81;
+   --------------------
+   -- Hardware clock --
+   --------------------
 
-   procedure PWR_Initialize;
+   Main_Clock_Frequency : constant := 120_000_000;
+   HSE_Clock_Frequency  : constant :=  26_000_000;
 
-   procedure PWR_Overdrive_Enable;
+   FLASH_Latency : constant := 3;
+   PLLP_Value    : constant := 2;
+   PLLQ_Value    : constant := 5;
 
-   function Is_PWR_Stabilized return Boolean
-     is (True);
-
-end System.BB.MCU_Parameters;
+end System.BB.Board_Parameters;

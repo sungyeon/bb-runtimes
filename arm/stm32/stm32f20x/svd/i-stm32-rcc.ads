@@ -1,8 +1,8 @@
 --
---  Copyright (C) 2019, AdaCore
+--  Copyright (C) 2017, AdaCore
 --
 
---  This spec has been automatically generated from STM32F20x.svd
+--  This spec has been automatically generated from STM32F40x.svd
 
 pragma Ada_2012;
 pragma Style_Checks (Off);
@@ -63,7 +63,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_28_31 : Interfaces.STM32.UInt4 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for CR_Register use record
@@ -84,129 +84,23 @@ package Interfaces.STM32.RCC is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   --  PLLCFGR_PLLM array element
-   subtype PLLCFGR_PLLM_Element is Interfaces.STM32.Bit;
-
-   --  PLLCFGR_PLLM array
-   type PLLCFGR_PLLM_Field_Array is array (0 .. 5) of PLLCFGR_PLLM_Element
-     with Component_Size => 1, Size => 6;
-
-   --  Type definition for PLLCFGR_PLLM
-   type PLLCFGR_PLLM_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  PLLM as a value
-            Val : Interfaces.STM32.UInt6;
-         when True =>
-            --  PLLM as an array
-            Arr : PLLCFGR_PLLM_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 6;
-
-   for PLLCFGR_PLLM_Field use record
-      Val at 0 range 0 .. 5;
-      Arr at 0 range 0 .. 5;
-   end record;
-
-   --  PLLCFGR_PLLN array element
-   subtype PLLCFGR_PLLN_Element is Interfaces.STM32.Bit;
-
-   --  PLLCFGR_PLLN array
-   type PLLCFGR_PLLN_Field_Array is array (0 .. 8) of PLLCFGR_PLLN_Element
-     with Component_Size => 1, Size => 9;
-
-   --  Type definition for PLLCFGR_PLLN
-   type PLLCFGR_PLLN_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  PLLN as a value
-            Val : Interfaces.STM32.UInt9;
-         when True =>
-            --  PLLN as an array
-            Arr : PLLCFGR_PLLN_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 9;
-
-   for PLLCFGR_PLLN_Field use record
-      Val at 0 range 0 .. 8;
-      Arr at 0 range 0 .. 8;
-   end record;
-
-   --  PLLCFGR_PLLP array element
-   subtype PLLCFGR_PLLP_Element is Interfaces.STM32.Bit;
-
-   --  PLLCFGR_PLLP array
-   type PLLCFGR_PLLP_Field_Array is array (0 .. 1) of PLLCFGR_PLLP_Element
-     with Component_Size => 1, Size => 2;
-
-   --  Type definition for PLLCFGR_PLLP
-   type PLLCFGR_PLLP_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  PLLP as a value
-            Val : Interfaces.STM32.UInt2;
-         when True =>
-            --  PLLP as an array
-            Arr : PLLCFGR_PLLP_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 2;
-
-   for PLLCFGR_PLLP_Field use record
-      Val at 0 range 0 .. 1;
-      Arr at 0 range 0 .. 1;
-   end record;
-
+   subtype PLLCFGR_PLLM_Field is Interfaces.STM32.UInt6;
+   subtype PLLCFGR_PLLN_Field is Interfaces.STM32.UInt9;
+   subtype PLLCFGR_PLLP_Field is Interfaces.STM32.UInt2;
    subtype PLLCFGR_PLLSRC_Field is Interfaces.STM32.Bit;
-   --  PLLCFGR_PLLQ array element
-   subtype PLLCFGR_PLLQ_Element is Interfaces.STM32.Bit;
-
-   --  PLLCFGR_PLLQ array
-   type PLLCFGR_PLLQ_Field_Array is array (0 .. 3) of PLLCFGR_PLLQ_Element
-     with Component_Size => 1, Size => 4;
-
-   --  Type definition for PLLCFGR_PLLQ
-   type PLLCFGR_PLLQ_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  PLLQ as a value
-            Val : Interfaces.STM32.UInt4;
-         when True =>
-            --  PLLQ as an array
-            Arr : PLLCFGR_PLLQ_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 4;
-
-   for PLLCFGR_PLLQ_Field use record
-      Val at 0 range 0 .. 3;
-      Arr at 0 range 0 .. 3;
-   end record;
+   subtype PLLCFGR_PLLQ_Field is Interfaces.STM32.UInt4;
 
    --  PLL configuration register
    type PLLCFGR_Register is record
       --  Division factor for the main PLL (PLL) and audio PLL (PLLI2S) input
       --  clock
-      PLLM           : PLLCFGR_PLLM_Field :=
-                        (As_Array => False, Val => 16#0#);
+      PLLM           : PLLCFGR_PLLM_Field := 16#10#;
       --  Main PLL (PLL) multiplication factor for VCO
-      PLLN           : PLLCFGR_PLLN_Field :=
-                        (As_Array => False, Val => 16#0#);
+      PLLN           : PLLCFGR_PLLN_Field := 16#C0#;
       --  unspecified
       Reserved_15_15 : Interfaces.STM32.Bit := 16#0#;
       --  Main PLL (PLL) division factor for main system clock
-      PLLP           : PLLCFGR_PLLP_Field :=
-                        (As_Array => False, Val => 16#0#);
+      PLLP           : PLLCFGR_PLLP_Field := 16#0#;
       --  unspecified
       Reserved_18_21 : Interfaces.STM32.UInt4 := 16#0#;
       --  Main PLL(PLL) and audio PLL (PLLI2S) entry clock source
@@ -215,12 +109,11 @@ package Interfaces.STM32.RCC is
       Reserved_23_23 : Interfaces.STM32.Bit := 16#0#;
       --  Main PLL (PLL) division factor for USB OTG FS, SDIO and random number
       --  generator clocks
-      PLLQ           : PLLCFGR_PLLQ_Field :=
-                        (As_Array => False, Val => 16#0#);
+      PLLQ           : PLLCFGR_PLLQ_Field := 16#4#;
       --  unspecified
       Reserved_28_31 : Interfaces.STM32.UInt4 := 16#2#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for PLLCFGR_Register use record
@@ -235,93 +128,15 @@ package Interfaces.STM32.RCC is
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
 
-   --  CFGR_SW array element
-   subtype CFGR_SW_Element is Interfaces.STM32.Bit;
-
-   --  CFGR_SW array
-   type CFGR_SW_Field_Array is array (0 .. 1) of CFGR_SW_Element
-     with Component_Size => 1, Size => 2;
-
-   --  Type definition for CFGR_SW
-   type CFGR_SW_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  SW as a value
-            Val : Interfaces.STM32.UInt2;
-         when True =>
-            --  SW as an array
-            Arr : CFGR_SW_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 2;
-
-   for CFGR_SW_Field use record
-      Val at 0 range 0 .. 1;
-      Arr at 0 range 0 .. 1;
-   end record;
-
-   --  CFGR_SWS array element
-   subtype CFGR_SWS_Element is Interfaces.STM32.Bit;
-
-   --  CFGR_SWS array
-   type CFGR_SWS_Field_Array is array (0 .. 1) of CFGR_SWS_Element
-     with Component_Size => 1, Size => 2;
-
-   --  Type definition for CFGR_SWS
-   type CFGR_SWS_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  SWS as a value
-            Val : Interfaces.STM32.UInt2;
-         when True =>
-            --  SWS as an array
-            Arr : CFGR_SWS_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 2;
-
-   for CFGR_SWS_Field use record
-      Val at 0 range 0 .. 1;
-      Arr at 0 range 0 .. 1;
-   end record;
-
-   --  CFGR_HPRE array element
-   subtype CFGR_HPRE_Element is Interfaces.STM32.Bit;
-
-   --  CFGR_HPRE array
-   type CFGR_HPRE_Field_Array is array (0 .. 3) of CFGR_HPRE_Element
-     with Component_Size => 1, Size => 4;
-
-   --  Type definition for CFGR_HPRE
-   type CFGR_HPRE_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  HPRE as a value
-            Val : Interfaces.STM32.UInt4;
-         when True =>
-            --  HPRE as an array
-            Arr : CFGR_HPRE_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 4;
-
-   for CFGR_HPRE_Field use record
-      Val at 0 range 0 .. 3;
-      Arr at 0 range 0 .. 3;
-   end record;
-
+   subtype CFGR_SW_Field is Interfaces.STM32.UInt2;
+   subtype CFGR_SWS_Field is Interfaces.STM32.UInt2;
+   subtype CFGR_HPRE_Field is Interfaces.STM32.UInt4;
    --  CFGR_PPRE array element
-   subtype CFGR_PPRE_Element is Interfaces.STM32.Bit;
+   subtype CFGR_PPRE_Element is Interfaces.STM32.UInt3;
 
    --  CFGR_PPRE array
-   type CFGR_PPRE_Field_Array is array (10 .. 15) of CFGR_PPRE_Element
-     with Component_Size => 1, Size => 6;
+   type CFGR_PPRE_Field_Array is array (1 .. 2) of CFGR_PPRE_Element
+     with Component_Size => 3, Size => 6;
 
    --  Type definition for CFGR_PPRE
    type CFGR_PPRE_Field
@@ -343,165 +158,39 @@ package Interfaces.STM32.RCC is
       Arr at 0 range 0 .. 5;
    end record;
 
-   --  CFGR_RTCPRE array element
-   subtype CFGR_RTCPRE_Element is Interfaces.STM32.Bit;
-
-   --  CFGR_RTCPRE array
-   type CFGR_RTCPRE_Field_Array is array (0 .. 4) of CFGR_RTCPRE_Element
-     with Component_Size => 1, Size => 5;
-
-   --  Type definition for CFGR_RTCPRE
-   type CFGR_RTCPRE_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  RTCPRE as a value
-            Val : Interfaces.STM32.UInt5;
-         when True =>
-            --  RTCPRE as an array
-            Arr : CFGR_RTCPRE_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 5;
-
-   for CFGR_RTCPRE_Field use record
-      Val at 0 range 0 .. 4;
-      Arr at 0 range 0 .. 4;
-   end record;
-
-   --  CFGR_MCO array element
-   subtype CFGR_MCO_Element is Interfaces.STM32.Bit;
-
-   --  CFGR_MCO array
-   type CFGR_MCO_Field_Array is array (10 .. 11) of CFGR_MCO_Element
-     with Component_Size => 1, Size => 2;
-
-   --  Type definition for CFGR_MCO
-   type CFGR_MCO_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  MCO as a value
-            Val : Interfaces.STM32.UInt2;
-         when True =>
-            --  MCO as an array
-            Arr : CFGR_MCO_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 2;
-
-   for CFGR_MCO_Field use record
-      Val at 0 range 0 .. 1;
-      Arr at 0 range 0 .. 1;
-   end record;
-
+   subtype CFGR_RTCPRE_Field is Interfaces.STM32.UInt5;
+   subtype CFGR_MCO1_Field is Interfaces.STM32.UInt2;
    subtype CFGR_I2SSRC_Field is Interfaces.STM32.Bit;
-   --  CFGR_MCO1PRE array element
-   subtype CFGR_MCO1PRE_Element is Interfaces.STM32.Bit;
-
-   --  CFGR_MCO1PRE array
-   type CFGR_MCO1PRE_Field_Array is array (0 .. 2) of CFGR_MCO1PRE_Element
-     with Component_Size => 1, Size => 3;
-
-   --  Type definition for CFGR_MCO1PRE
-   type CFGR_MCO1PRE_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  MCO1PRE as a value
-            Val : Interfaces.STM32.UInt3;
-         when True =>
-            --  MCO1PRE as an array
-            Arr : CFGR_MCO1PRE_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 3;
-
-   for CFGR_MCO1PRE_Field use record
-      Val at 0 range 0 .. 2;
-      Arr at 0 range 0 .. 2;
-   end record;
-
-   --  CFGR_MCO2PRE array element
-   subtype CFGR_MCO2PRE_Element is Interfaces.STM32.Bit;
-
-   --  CFGR_MCO2PRE array
-   type CFGR_MCO2PRE_Field_Array is array (0 .. 2) of CFGR_MCO2PRE_Element
-     with Component_Size => 1, Size => 3;
-
-   --  Type definition for CFGR_MCO2PRE
-   type CFGR_MCO2PRE_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  MCO2PRE as a value
-            Val : Interfaces.STM32.UInt3;
-         when True =>
-            --  MCO2PRE as an array
-            Arr : CFGR_MCO2PRE_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 3;
-
-   for CFGR_MCO2PRE_Field use record
-      Val at 0 range 0 .. 2;
-      Arr at 0 range 0 .. 2;
-   end record;
-
-   --  CFGR_MCO array
-   type CFGR_MCO_Field_Array_1 is array (20 .. 21) of CFGR_MCO_Element
-     with Component_Size => 1, Size => 2;
-
-   --  Type definition for CFGR_MCO
-   type CFGR_MCO_Field_1
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  MCO as a value
-            Val : Interfaces.STM32.UInt2;
-         when True =>
-            --  MCO as an array
-            Arr : CFGR_MCO_Field_Array_1;
-      end case;
-   end record
-     with Unchecked_Union, Size => 2;
-
-   for CFGR_MCO_Field_1 use record
-      Val at 0 range 0 .. 1;
-      Arr at 0 range 0 .. 1;
-   end record;
+   subtype CFGR_MCO1PRE_Field is Interfaces.STM32.UInt3;
+   subtype CFGR_MCO2PRE_Field is Interfaces.STM32.UInt3;
+   subtype CFGR_MCO2_Field is Interfaces.STM32.UInt2;
 
    --  clock configuration register
    type CFGR_Register is record
       --  System clock switch
-      SW           : CFGR_SW_Field := (As_Array => False, Val => 16#0#);
+      SW           : CFGR_SW_Field := 16#0#;
       --  Read-only. System clock switch status
-      SWS          : CFGR_SWS_Field := (As_Array => False, Val => 16#0#);
+      SWS          : CFGR_SWS_Field := 16#0#;
       --  AHB prescaler
-      HPRE         : CFGR_HPRE_Field := (As_Array => False, Val => 16#0#);
+      HPRE         : CFGR_HPRE_Field := 16#0#;
       --  unspecified
       Reserved_8_9 : Interfaces.STM32.UInt2 := 16#0#;
       --  APB Low speed prescaler (APB1)
       PPRE         : CFGR_PPRE_Field := (As_Array => False, Val => 16#0#);
       --  HSE division factor for RTC clock
-      RTCPRE       : CFGR_RTCPRE_Field := (As_Array => False, Val => 16#0#);
+      RTCPRE       : CFGR_RTCPRE_Field := 16#0#;
       --  Microcontroller clock output 1
-      MCO          : CFGR_MCO_Field := (As_Array => False, Val => 16#0#);
+      MCO1         : CFGR_MCO1_Field := 16#0#;
       --  I2S clock selection
       I2SSRC       : CFGR_I2SSRC_Field := 16#0#;
       --  MCO1 prescaler
-      MCO1PRE      : CFGR_MCO1PRE_Field := (As_Array => False, Val => 16#0#);
+      MCO1PRE      : CFGR_MCO1PRE_Field := 16#0#;
       --  MCO2 prescaler
-      MCO2PRE      : CFGR_MCO2PRE_Field := (As_Array => False, Val => 16#0#);
+      MCO2PRE      : CFGR_MCO2PRE_Field := 16#0#;
       --  Microcontroller clock output 2
-      MCO_1        : CFGR_MCO_Field_1 := (As_Array => False, Val => 16#0#);
+      MCO2         : CFGR_MCO2_Field := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for CFGR_Register use record
@@ -511,11 +200,11 @@ package Interfaces.STM32.RCC is
       Reserved_8_9 at 0 range 8 .. 9;
       PPRE         at 0 range 10 .. 15;
       RTCPRE       at 0 range 16 .. 20;
-      MCO          at 0 range 21 .. 22;
+      MCO1         at 0 range 21 .. 22;
       I2SSRC       at 0 range 23 .. 23;
       MCO1PRE      at 0 range 24 .. 26;
       MCO2PRE      at 0 range 27 .. 29;
-      MCO_1        at 0 range 30 .. 31;
+      MCO2         at 0 range 30 .. 31;
    end record;
 
    subtype CIR_LSIRDYF_Field is Interfaces.STM32.Bit;
@@ -590,7 +279,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_24_31 : Interfaces.STM32.Byte := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for CIR_Register use record
@@ -676,7 +365,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_30_31 : Interfaces.STM32.UInt2 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB1RSTR_Register use record
@@ -718,7 +407,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_8_31 : Interfaces.STM32.UInt24 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB2RSTR_Register use record
@@ -738,7 +427,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_1_31 : Interfaces.STM32.UInt31 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB3RSTR_Register use record
@@ -831,7 +520,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_30_31 : Interfaces.STM32.UInt2 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for APB1RSTR_Register use record
@@ -915,7 +604,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_19_31 : Interfaces.STM32.UInt13 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for APB2RSTR_Register use record
@@ -987,7 +676,7 @@ package Interfaces.STM32.RCC is
       --  Backup SRAM interface clock enable
       BKPSRAMEN      : AHB1ENR_BKPSRAMEN_Field := 16#0#;
       --  unspecified
-      Reserved_19_20 : Interfaces.STM32.UInt2 := 16#0#;
+      Reserved_19_20 : Interfaces.STM32.UInt2 := 16#2#;
       --  DMA1 clock enable
       DMA1EN         : AHB1ENR_DMA1EN_Field := 16#0#;
       --  DMA2 clock enable
@@ -1009,7 +698,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_31_31 : Interfaces.STM32.Bit := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB1ENR_Register use record
@@ -1056,7 +745,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_8_31 : Interfaces.STM32.UInt24 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB2ENR_Register use record
@@ -1076,7 +765,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_1_31 : Interfaces.STM32.UInt31 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB3ENR_Register use record
@@ -1169,7 +858,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_30_31 : Interfaces.STM32.UInt2 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for APB1ENR_Register use record
@@ -1257,7 +946,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_19_31 : Interfaces.STM32.UInt13 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for APB2ENR_Register use record
@@ -1361,7 +1050,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_31_31 : Interfaces.STM32.Bit := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB1LPENR_Register use record
@@ -1411,7 +1100,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_8_31 : Interfaces.STM32.UInt24 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB2LPENR_Register use record
@@ -1432,7 +1121,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_1_31 : Interfaces.STM32.UInt31 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for AHB3LPENR_Register use record
@@ -1525,7 +1214,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_30_31 : Interfaces.STM32.UInt2 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for APB1LPENR_Register use record
@@ -1613,7 +1302,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_19_31 : Interfaces.STM32.UInt13 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for APB2LPENR_Register use record
@@ -1691,7 +1380,7 @@ package Interfaces.STM32.RCC is
       --  unspecified
       Reserved_17_31 : Interfaces.STM32.UInt15 := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for BDCR_Register use record
@@ -1710,7 +1399,7 @@ package Interfaces.STM32.RCC is
    subtype CSR_LSIRDY_Field is Interfaces.STM32.Bit;
    subtype CSR_RMVF_Field is Interfaces.STM32.Bit;
    subtype CSR_BORRSTF_Field is Interfaces.STM32.Bit;
-   subtype CSR_PINRSTF_Field is Interfaces.STM32.Bit;
+   subtype CSR_PADRSTF_Field is Interfaces.STM32.Bit;
    subtype CSR_PORRSTF_Field is Interfaces.STM32.Bit;
    subtype CSR_SFTRSTF_Field is Interfaces.STM32.Bit;
    subtype CSR_WDGRSTF_Field is Interfaces.STM32.Bit;
@@ -1730,7 +1419,7 @@ package Interfaces.STM32.RCC is
       --  BOR reset flag
       BORRSTF       : CSR_BORRSTF_Field := 16#1#;
       --  PIN reset flag
-      PINRSTF       : CSR_PINRSTF_Field := 16#1#;
+      PADRSTF       : CSR_PADRSTF_Field := 16#1#;
       --  POR/PDR reset flag
       PORRSTF       : CSR_PORRSTF_Field := 16#1#;
       --  Software reset flag
@@ -1742,7 +1431,7 @@ package Interfaces.STM32.RCC is
       --  Low-power reset flag
       LPWRRSTF      : CSR_LPWRRSTF_Field := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for CSR_Register use record
@@ -1751,7 +1440,7 @@ package Interfaces.STM32.RCC is
       Reserved_2_23 at 0 range 2 .. 23;
       RMVF          at 0 range 24 .. 24;
       BORRSTF       at 0 range 25 .. 25;
-      PINRSTF       at 0 range 26 .. 26;
+      PADRSTF       at 0 range 26 .. 26;
       PORRSTF       at 0 range 27 .. 27;
       SFTRSTF       at 0 range 28 .. 28;
       WDGRSTF       at 0 range 29 .. 29;
@@ -1777,7 +1466,7 @@ package Interfaces.STM32.RCC is
       --  Spread spectrum modulation enable
       SSCGEN         : SSCGR_SSCGEN_Field := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for SSCGR_Register use record
@@ -1788,85 +1477,30 @@ package Interfaces.STM32.RCC is
       SSCGEN         at 0 range 31 .. 31;
    end record;
 
-   --  PLLI2SCFGR_PLLI2SN array element
-   subtype PLLI2SCFGR_PLLI2SN_Element is Interfaces.STM32.Bit;
-
-   --  PLLI2SCFGR_PLLI2SN array
-   type PLLI2SCFGR_PLLI2SN_Field_Array is array (0 .. 8)
-     of PLLI2SCFGR_PLLI2SN_Element
-     with Component_Size => 1, Size => 9;
-
-   --  Type definition for PLLI2SCFGR_PLLI2SN
-   type PLLI2SCFGR_PLLI2SN_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  PLLI2SN as a value
-            Val : Interfaces.STM32.UInt9;
-         when True =>
-            --  PLLI2SN as an array
-            Arr : PLLI2SCFGR_PLLI2SN_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 9;
-
-   for PLLI2SCFGR_PLLI2SN_Field use record
-      Val at 0 range 0 .. 8;
-      Arr at 0 range 0 .. 8;
-   end record;
-
-   --  PLLI2SCFGR_PLLI2SR array element
-   subtype PLLI2SCFGR_PLLI2SR_Element is Interfaces.STM32.Bit;
-
-   --  PLLI2SCFGR_PLLI2SR array
-   type PLLI2SCFGR_PLLI2SR_Field_Array is array (0 .. 2)
-     of PLLI2SCFGR_PLLI2SR_Element
-     with Component_Size => 1, Size => 3;
-
-   --  Type definition for PLLI2SCFGR_PLLI2SR
-   type PLLI2SCFGR_PLLI2SR_Field
-     (As_Array : Boolean := False)
-   is record
-      case As_Array is
-         when False =>
-            --  PLLI2SR as a value
-            Val : Interfaces.STM32.UInt3;
-         when True =>
-            --  PLLI2SR as an array
-            Arr : PLLI2SCFGR_PLLI2SR_Field_Array;
-      end case;
-   end record
-     with Unchecked_Union, Size => 3;
-
-   for PLLI2SCFGR_PLLI2SR_Field use record
-      Val at 0 range 0 .. 2;
-      Arr at 0 range 0 .. 2;
-   end record;
+   subtype PLLI2SCFGR_PLLI2SNx_Field is Interfaces.STM32.UInt9;
+   subtype PLLI2SCFGR_PLLI2SRx_Field is Interfaces.STM32.UInt3;
 
    --  PLLI2S configuration register
    type PLLI2SCFGR_Register is record
       --  unspecified
       Reserved_0_5   : Interfaces.STM32.UInt6 := 16#0#;
       --  PLLI2S multiplication factor for VCO
-      PLLI2SN        : PLLI2SCFGR_PLLI2SN_Field :=
-                        (As_Array => False, Val => 16#0#);
+      PLLI2SNx       : PLLI2SCFGR_PLLI2SNx_Field := 16#C0#;
       --  unspecified
       Reserved_15_27 : Interfaces.STM32.UInt13 := 16#0#;
       --  PLLI2S division factor for I2S clocks
-      PLLI2SR        : PLLI2SCFGR_PLLI2SR_Field :=
-                        (As_Array => False, Val => 16#0#);
+      PLLI2SRx       : PLLI2SCFGR_PLLI2SRx_Field := 16#2#;
       --  unspecified
       Reserved_31_31 : Interfaces.STM32.Bit := 16#0#;
    end record
-     with Volatile_Full_Access, Object_Size => 32,
+     with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for PLLI2SCFGR_Register use record
       Reserved_0_5   at 0 range 0 .. 5;
-      PLLI2SN        at 0 range 6 .. 14;
+      PLLI2SNx       at 0 range 6 .. 14;
       Reserved_15_27 at 0 range 15 .. 27;
-      PLLI2SR        at 0 range 28 .. 30;
+      PLLI2SRx       at 0 range 28 .. 30;
       Reserved_31_31 at 0 range 31 .. 31;
    end record;
 
@@ -1953,6 +1587,6 @@ package Interfaces.STM32.RCC is
 
    --  Reset and clock control
    RCC_Periph : aliased RCC_Peripheral
-     with Import, Address => RCC_Base;
+     with Import, Address => System'To_Address (16#40023800#);
 
 end Interfaces.STM32.RCC;

@@ -70,9 +70,12 @@ package body System.STM32 is
 
          when SYSCLK_SRC_PLL =>
             declare
-               Pllm   : constant UInt32 := UInt32 (RCC_Periph.PLLCFGR.PLLM);
-               Plln   : constant UInt32 := UInt32 (RCC_Periph.PLLCFGR.PLLN);
-               Pllp   : constant UInt32 := UInt32 (RCC_Periph.PLLCFGR.PLLP);
+               Pllm   : constant UInt32 :=
+                  UInt32 (RCC_Periph.PLLCFGR.PLLM);
+               Plln   : constant UInt32 :=
+                  UInt32 (RCC_Periph.PLLCFGR.PLLN);
+               Pllp   : constant UInt32 :=
+                  UInt32 (RCC_Periph.PLLCFGR.PLLP);
                Pllvco : UInt32;
 
             begin
